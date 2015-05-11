@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+
+
+<struts-config>
+
+	<form-beans>
+		<form-bean name="loginForm"
+			type="com.neusoft.logistics.action.form.LoginForm">
+		</form-bean>
+	</form-beans>
+	<global-forwards />
+	<action-mappings>
+	    <!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/login"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/login" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/showList"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/showList" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/dynamicTree"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/dynamicTree" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/substationInto"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/substationInto" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/substationInto"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/substationReturn" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/substationInto"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/substationReturnOut" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/substationInto"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/centerwarehouseInto" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 周诗龙 -->
+		<!-- 转发到applicationContext-actions中id="/substationInto"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/centerwarehouseOut" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		
+		<!-- 李亚方 -->
+		<!-- 中心库房购货入库 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/PurchaseProductOrderItemStore" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 中心库房调拨出库 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/AllocationOrderStore" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 库房设置 获取库房基本信息-->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/WareHouseStore" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 库房设置 获取库房的管理员-->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/ManageStore" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 库房储备设置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/ConfigStorageStorage" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 库存量查询-->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/RemainStorage" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 出入单查询-->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/InOutStore" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/subPaymentSearch" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/takeProduct" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 宋延杰 转发到applicationContext-actions中id="/Allocation"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/Allocation" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 宋延杰 转发到applicationContext-actions中id="/TaskOrderQuery"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/TaskOrderQuery" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 罗荣博 转发到applicationContext-actions中id="/orderInfo"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/orderInfo" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+
+		<!-- 罗荣博 转发到applicationContext-actions中id="/orderDetail"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/orderDetail" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!--罗荣博 转发到applicationContext-actions中id="//productDetail"的配置  -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/productDetail" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		
+		<!-- 张文华 转发到applicationContext-actions中id="/customerInfo"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/customerInfo" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 张文华 转发到applicationContext-actions中id="/orderProductInfo"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/orderProductInfo" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 张文华 转发到applicationContext-actions中id="/productInfo"的配置	parameter="actionType"  -->
+		<action 
+		input="/index.jsp"
+	
+		path="/productInfo" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 李莎 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/subGetAllTask" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/subGetAllTask2" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/subsavefeedback" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/subGetAllDeliverman" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/allocateDeliverman" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/taskOrderDetail" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/taskOrderProductDetail" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/subProduct" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+
+		
+		<!-- 龚玉斌 转发到applicationContext-actions中id="/purchaseProduct"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/purchaseProduct" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />	
+		
+		<!-- 龚玉斌 转发到applicationContext-actions中id="/returnProduct"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/returnProduct" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />	
+		
+		
+		<!-- 龚玉斌 转发到applicationContext-actions中id="/returnProduct"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/customerSatisfaction" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />	
+		
+	<!-- 龚玉斌 转发到applicationContext-actions中id="/returnProduct"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/productHotMost" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />	
+
+
+		<!-- 陈秀能 转发到applicationContext-actions中id="/secondCategory"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/category"  
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		<!-- 陈秀能 转发到applicationContext-actions中id="/supplierManage"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/supplierManage" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		<!-- 陈秀能 转发到applicationContext-actions中id="/supplierManage"的配置 -->
+		<action 
+		input="/index.jsp"
+		parameter="actionType" 
+		path="/warehouse" 
+		scope="request"
+		type="org.springframework.web.struts.DelegatingActionProxy" />
+		
+		
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+</struts-config>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!--陈秀能   -->
+	<bean id="manageCategoryService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.ManageCategoryServiceImpl">
+		<property name="categoryDAO" ref="categoryDAO"></property>
+	</bean>
+
+	<!--陈秀能   -->
+	<bean id="queryCategoryService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.QueryCategoryServiceImpl">
+		<property name="categoryDAO" ref="categoryDAO"></property>
+	</bean>
+	<!--陈秀能   -->
+	<bean id="queryProductService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.QueryProductServiceImpl">
+		<property name="productDAO" ref="productDAO"></property>
+	</bean>
+
+	<!--陈秀能   -->
+	<bean id="supplierService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.SupplierServiceImpl">
+		<property name="supplierDAO" ref="supplierDAO"></property>
+	</bean>
+	<!--陈秀能   -->
+	<bean id="warehouseService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.WarehouseServiceImpl">
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+	</bean>
+	<!--陈秀能   -->
+	<bean id="storageInfoService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.StorageInfoServiceImpl">
+		<property name="storageInfoDAO" ref="storageInfoDAO"></property>
+		<property name="returnProductOrderDAO"
+			ref="returnProductOrderDAO">
+		</property>
+		<property name="orderItemDAO" ref="orderItemDAO"></property>
+	</bean>
+	<bean id="inOutStorageOrderService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.InOutStorageServiceImpl">
+		<property name="outStorageOrderItemDAO"
+			ref="outStorageOrderItemDAO">
+		</property>
+		<property name="purchaseInStorageOrderItemDAO"
+			ref="purchaseInStorageOrderItemDAO">
+		</property>
+		<property name="substationInStorageOrderItemDAO"
+			ref="substationInStorageOrderItemDAO">
+		</property>
+	</bean>
+	<bean id="manageProductService"
+		class="com.neusoft.logistics.service.impl.dispatcherCenterManage.ManageProductServiceImpl">
+		<property name="productDAO" ref="productDAO"></property>
+		<property name="storageInfoDAO" ref="storageInfoDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+	</bean>
+</beans>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+<!-- 李莎 分站缴款查询 -->
+	<bean name="/subPaymentSearch" 
+		class="com.neusoft.logistics.action.submanage.SubPaymentSearchAction">
+		<property name="payService" ref="payService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+		<!-- 李莎 得到分站所有配送员 -->
+	<bean name="/subGetAllDeliverman" 
+		class="com.neusoft.logistics.action.submanage.SubGetAllDelivermanAction">
+		<property name="subGetAllDelivermanService" ref="subGetAllDelivermanService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 李莎 得到分站的任务单信息 -->
+	<bean name="/subGetAllTask" 
+		class="com.neusoft.logistics.action.submanage.SubGetAllTaskAction">
+		<property name="subGetAllTaskService" ref="subGetAllTaskService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean> 
+	<!-- 李莎 得到分站的任务单信息 -->
+	<bean name="/subGetAllTask2" 
+		class="com.neusoft.logistics.action.submanage.SubGetAllTaskAction2">
+		<property name="subGetAllTaskService" ref="subGetAllTaskService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean> 
+	<!-- 李莎 保存回执信息 -->
+	<bean name="/subsavefeedback" 
+		class="com.neusoft.logistics.action.submanage.SubSaveFeedbackTaskAction">
+		<property name="saveFeedbackTaskService" ref="subSaveFeedbackTaskService"></property>
+	</bean>
+	<!-- 李莎 分配配送员 -->
+	<bean name="/allocateDeliverman" 
+		class="com.neusoft.logistics.action.submanage.AllocateDeliverman">
+		<property name="allocateDiliverman" ref="subGetAllTaskService"></property>
+	</bean>
+	<!-- 李莎 得到任务单详情 -->
+	<bean name="/taskOrderDetail" 
+		class="com.neusoft.logistics.action.submanage.TaskOrderDetailAction">
+		<property name="subGetTaskService" ref="subGetAllTaskService"></property>
+	</bean>
+	<!-- 李莎 得到任务单中商品详情 -->
+	<bean name="/taskOrderProductDetail" 
+		class="com.neusoft.logistics.action.submanage.TaskOrderProductDetailAction">
+		<property name="subGetTaskService" ref="subGetAllTaskService"></property>
+	</bean>
+	<bean name="/subProduct" 
+		class="com.neusoft.logistics.action.submanage.SubAllProductAction">
+		<property name="subGetAllDelivermanService" ref="subGetAllDelivermanService"></property>
+	</bean>
+</beans>

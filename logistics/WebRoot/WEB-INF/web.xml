@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	version="2.4" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    <init-param>
+      <param-name>config</param-name>
+      <param-value>/WEB-INF/struts-config.xml</param-value>
+    </init-param>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <init-param>
+      <param-name>detail</param-name>
+      <param-value>2</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+
+  <!-- Standard Action Servlet Mapping -->
+  <servlet-mapping>
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 注意：Spring的配置文件applicationContext.xml的位置可以不是固定的。
+  	   由于本项目中我们的applicationContext.xml是放在了src classpath根目录下，
+  	   所以我们应该如下配置它，当然也可以放在WEB-INF下：
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath*:applicationContext.xml,/WEB-INF/applicationContext.xml</param-value>
+  </context-param>
+  -->
+  <!-- 本项目中，我根据配置文件中内容的不同，拆分为3个文件，
+  	   都是以"applicationContext-"开头，所以这里，我以*来匹配他们。 
+   -->
+   <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath*:applicationContext-*.xml</param-value>
+  </context-param>
+  
+  <!--  接下来还需要配置Spring 的上下文加载监听器：
+  		该监听器负责读取我们的配置变量contextConfigLocation（line 44），
+  		得到我们的配置文件 applicationContext-common.xml、
+  					    applicationContext-actions.xml、
+  					    applicationContext-beans.xml;
+  	   	然后生成BeanFactory对象放入到ServletContext对象中。
+  	   	原意如下：
+  	   	Loads the root application context of this web app at startup,
+	   	by default from "/WEB-INF/applicationContext.xml".
+		Note that you need to fall back to Spring's ContextLoaderServlet for
+		J2EE servers that do not follow the Servlet 2.4 initialization order.
+	  	Use WebApplicationContextUtils.getWebApplicationContext(servletContext)
+	  	to access it anywhere in the web application, outside of the framework.
+	  
+	  	可以在spring.jar中找到专门来读取这个配置文件的类：
+	  	org.springframework.web.context. ContextLoaderListener
+	  	对应的相关代码可以在其中查看得到。
+  	-->
+  <listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <!-- 该CharacterEncodingFilter是Spring为我们提供的字符编码过滤器，
+  	   当然我们可以自己写一个相关的Filter链进来，也可以使用Spring提供的。
+   -->
+  <filter>
+  	<filter-name>Spring character encoding filter</filter-name>
+  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Spring character encoding filter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+ 
+ <!-- 
+ 		* Servlet 2.3 Filter that binds a Hibernate Session to the thread for the entire
+ 		* processing of the request. Intended for the "Open Session in View" pattern,
+ 		* i.e. to allow for lazy loading in web views despite the original transactions
+ 		* already being completed.
+ 		* This filter works similar to the AOP HibernateInterceptor: It just makes
+ 		* Hibernate Sessions available via the thread. It is suitable for non-transactional
+ 		* execution but also for business layer transactions via HibernateTransactionManager
+ 		* or JtaTransactionManager. In the latter case, Sessions pre-bound by this filter
+ 		* will automatically be used for the transactions and flushed accordingly.
+ 		
+ 		You could read the notes in the class "OpenSessionInViewFilter",and learn more about it ! 
+  -->
+  <filter>
+  	<filter-name>hibernateFilter</filter-name>
+  	<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>hibernateFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list> 
+</web-app>

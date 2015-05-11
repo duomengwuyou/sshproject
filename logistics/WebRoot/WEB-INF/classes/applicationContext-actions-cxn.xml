@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 
+		<bean name="/login" 
+		class="com.neusoft.logistics.action.*.*">
+		<property name="*Service" ref="*Service"></property>
+		</bean> 
+	-->
+
+	<!--陈秀能 secondCategory  -->
+	<bean name="/category"
+		class="com.neusoft.logistics.action.dispatcherCenterManage.CategoryAction">
+		<property name="manageCategoryService"
+			ref="manageCategoryService">
+		</property>
+		<property name="queryCategoryService"
+			ref="queryCategoryService">
+		</property>
+	</bean>
+
+	<!--陈秀能 supplierManage  -->
+	<bean name="/supplierManage"
+		class="com.neusoft.logistics.action.dispatcherCenterManage.supplier.SupplierManageAction">
+		<property name="supplierService" ref="supplierService"></property>
+	</bean>
+		<!-- 李亚方  库房设置 获取库房基本信息-->
+	<bean name="/WareHouseStore" 
+		class="com.neusoft.logistics.action.storemanage.WareHouseStoreAction">
+		<property name="warehouseService" ref="warehouseService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 李亚方  库房设置 获取库房的管理员-->
+	<bean name="/ManageStore" 
+		class="com.neusoft.logistics.action.storemanage.ManageStoreAction">
+		<property name="queryUserService" ref="queryUserService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 李亚方  库房储备设置-->
+	<bean name="/ConfigStorageStorage" 
+		class="com.neusoft.logistics.action.storemanage.ConfigStorageStorageAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+		<property name="storageInfoService" ref="storageInfoService"/>
+	</bean>
+	
+	<!-- 李亚方  库存量查询-->
+	<bean name="/RemainStorage" 
+		class="com.neusoft.logistics.action.storemanage.RemainStorageAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+		<property name="storageInsoService" ref="storageInfoService"></property>
+	</bean>
+	<!-- 李亚方 出入单查询-->
+	<bean name="/InOutStore" 
+		class="com.neusoft.logistics.action.storemanage.InOutStoreAction">
+		<property name="inOutStorageOrderService" ref="inOutStorageOrderService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<bean name="/warehouse" 
+		class="com.neusoft.logistics.action.dispatcherCenterManage.WarehouseAction">
+		<property name="warehouseService" ref="warehouseService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+</beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	
+	<!-- 宋延杰 Allocation-->
+	<bean name="/Allocation" 
+		class="com.neusoft.logistics.action.allocation.AllocationAction">
+		<property name="allocationService" ref="allocationService"></property>
+		<property name="substationService" ref="substationService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 宋延杰 Allocation-->
+	<bean name="/TaskOrderQuery" 
+		class="com.neusoft.logistics.action.allocation.TaskOrderQueryAction">
+		<property name="taskOrderQueryService" ref="taskOrderQueryService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+</beans>

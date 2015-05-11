@@ -1,0 +1,76 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@10.10.34.116:1521:orcl
+		</property>
+ 
+		<property name="hibernate.connection.username">scott</property>
+		<property name="hibernate.connection.password">tiger</property>
+
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.OracleDialect
+		</property>
+		<!-- 默认是false,改为true,这样就可以显示出sql了 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<mapping
+			resource="com/neusoft/logistics/bean/AllocationOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/CancelOrder.hbm.xml" /> 
+		<mapping resource="com/neusoft/logistics/bean/Category.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/ChangeProductOrder.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/Customer.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/DispatchOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/DispatchOrderItem.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/FeedBackOrder.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/Function.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/Order.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/OrderItem.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/OutStorageOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/OutStorageOrderItem.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/Product.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/PurchaseInstorageOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/PurchaseInStorageOrderItem.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/PurchaseProductOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/ReturnProductOrder.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/Role.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/ShortageOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/SignerOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/StorageInfo.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/Substation.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/SubstationInStorageOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/SubstationInStorageOrderItem.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/Supplier.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/TakeProductOrder.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/TaskOrder.hbm.xml" />
+		<mapping resource="com/neusoft/logistics/bean/User.hbm.xml" />
+		<mapping
+			resource="com/neusoft/logistics/bean/Warehouse.hbm.xml" /> 
+	</session-factory>
+</hibernate-configuration>

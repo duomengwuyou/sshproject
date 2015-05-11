@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+ 
+	<!-- 
+	<bean id=""
+		class="com.neusoft.logistics.service.impl.*.*">
+		<property name="*DAO" ref="*DAO"></property>
+	</bean>
+   -->
+   
+   <!-- 张文华 -->
+	<bean id="customerInfoService"
+		class="com.neusoft.logistics.service.impl.customermanage.CustomerInfoServiceImpl">
+		<property name="customerDAO" ref="customerDAO"></property>
+		<property name="orderDAO" ref="orderDAO"></property>
+	</bean>
+
+	<!-- 张文华 -->
+	<bean id="orderProductInfoService"
+		class="com.neusoft.logistics.service.impl.customermanage.OrderProductInfoServiceImpl">
+		<property name="productDAO" ref="productDAO"></property>
+		<property name="substationDAO" ref="substationDAO"></property>
+		<property name="orderDAO" ref="orderDAO"></property>
+		<property name="storageInfoDAO" ref="storageInfoDAO"></property>
+		<property name="shortageOrderDAO" ref="shortageOrderDAO"></property>
+		<property name="warehouseDAO" ref="warehouseDAO"></property>
+		<property name="categoryDAO" ref="categoryDAO"></property>
+	</bean>
+   
+</beans>

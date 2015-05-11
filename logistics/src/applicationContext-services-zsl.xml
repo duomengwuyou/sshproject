@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+ 
+	<!-- 
+	<bean id=""
+		class="com.neusoft.logistics.service.impl.*.*">
+		<property name="*DAO" ref="*DAO"></property>
+	</bean>
+   -->
+   <!--周诗龙 -->
+	<bean id="queryUserService" class="com.neusoft.logistics.service.impl.QueryUserServiceImpl">
+	 	<!--  ref="userDao" 引用applicationContext-daos.xml中的userDao -->
+	 	<property name="userDAO" ref="userDAO"></property> 
+	</bean>
+	<!-- 周诗龙 -->
+	<bean id="dynamicTreeService" class="com.neusoft.logistics.service.impl.dynamictree.DynamicTreeService">
+	 	<!--  ref="userDao" 引用applicationContext-daos.xml中的userDao -->
+		 <property name="functionDAO" ref="functionDAO"></property>
+	</bean> 
+	<!-- 周诗龙 -->
+	<bean id="dispatchOrderService" class="com.neusoft.logistics.service.impl.storemanage.DispatchOrderServiceImpl">
+		 <!--  ref="userDao" 引用applicationContext-daos.xml中的userDao -->
+		 <property name="dispatchOrderItemDAO" ref="dispatchOrderItemDAO"></property>
+		 <property name="dispatchOrderDAO" ref="dispatchOrderDAO"></property>
+		 <property name="substationInStorageOrderDAO" ref="substationInStorageOrderDAO"></property>
+		 <property name="substationInStorageOrderItemDAO" ref="substationInStorageOrderItemDAO"></property>
+		 <property name="taskOrderDAO" ref="taskOrderDAO"></property>
+		 <property name="orderDAO" ref="orderDAO"></property>
+		 <property name="substationDAO" ref="substationDAO"></property>
+		 <property name="userDAO" ref="userDAO"></property>
+		 <property name="storageInfoDAO" ref="storageInfoDAO"></property>
+	</bean> 
+	<!-- 周诗龙 -->
+	<bean id="taskOrderService" class="com.neusoft.logistics.service.impl.storemanage.TaskOrderServiceImpl">
+		 <!--  ref="userDao" 引用applicationContext-daos.xml中的userDao -->
+		 <property name="taskOrderDAO" ref="taskOrderDAO"></property>
+		 <property name="takeProductOrderDAO" ref="takeProductOrderDAO"></property>
+		 <property name="userDAO" ref="userDAO"></property>
+		 <property name="storageInfoDAO" ref="storageInfoDAO"></property>
+		 <property name="orderDAO" ref="orderDAO"></property>
+		 <!-- <property name="dispatchOrderDAO" ref="dispatchOrderDAO"></property>
+		 <property name="substationInStorageOrderDAO" ref="substationInStorageOrderDAO"></property>
+		 <property name="substationInStorageOrderItemDAO" ref="substationInStorageOrderItemDAO"></property>-->
+	</bean>
+</beans>

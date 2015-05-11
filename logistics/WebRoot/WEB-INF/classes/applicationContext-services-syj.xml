@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+ 
+	<!-- 
+	<bean id=""
+		class="com.neusoft.logistics.service.impl.*.*">
+		<property name="*DAO" ref="*DAO"></property>
+	</bean>
+   -->
+   
+   <!-- 宋延杰 -->
+	<bean id="allocationService"
+		class="com.neusoft.logistics.service.impl.allocation.AllocationServiceImpl">
+		<property name="orderDAO" ref="orderDAO"></property>
+		<property name="substationDAO" ref="substationDAO"></property>
+		<property name="allocationDAO" ref="allocationDAO"></property>
+		<property name="taskOrderDAO" ref="taskOrderDAO"></property>
+	</bean>
+	<!-- 宋延杰 -->
+	<bean id="substationService"
+		class="com.neusoft.logistics.service.impl.allocation.SubstationServiceImpl">
+		<property name="substationDAO" ref="substationDAO"></property>
+	</bean>
+	<!-- 宋延杰 -->
+	<bean id="taskOrderQueryService"
+		class="com.neusoft.logistics.service.impl.allocation.TaskOrderQueryServiceImpl">
+		<property name="taskOrderDAO" ref="taskOrderDAO"></property>
+	</bean>
+</beans>

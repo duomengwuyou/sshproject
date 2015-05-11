@@ -1,0 +1,31 @@
+/*
+*命名规范
+*大家把使用单的中英文单词对照写到这个文件中，
+*如果里面已经有了，就是用已经命名好的，没有，就添加，有异议立即跟大家商量修改
+*用词尽可能正确，常用，易懂
+*此类问题尽早解决，因为越到后面影响的范围越大
+*关于代码的命名规范已经写在了readme.txt中
+*/
+/*
+*命名规范
+*大家注意在logistics下面建工程包，工程包的命名和需求中的3.3和3.4等是同一级的。在自己的工程包里面大家可以创建自己的代码包（不限制，但最起码自己能看明白）。
+*/
+order 订单，单
+item 条目
+category 分类
+add 增
+delete 删
+modify 改
+query 查
+product 商品
+zipCode 邮政编码
+station 站
+substation 分站
+supplier 供应商
+remark 备注
+quantity 数量
+amount 总量
+change 换
+changeProduct 换货
+take 领取
+takeProduct 领货

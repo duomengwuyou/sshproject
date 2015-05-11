@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<bean id="userDAO" class="com.neusoft.logistics.dao.impl.UserDAO">
+		<!-- ref="sessionFactory" 引用applicationContext-common.xml中的sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dynamicTreeDAO"
+		class="com.neusoft.logistics.dao.impl.DynamicTreeDAO">
+		<!-- ref="sessionFactory" 引用applicationContext-common.xml中的sessionFactory -->
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="allocationDAO"
+		class="com.neusoft.logistics.dao.impl.AllocationOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="cancelOrderDAO"
+		class="com.neusoft.logistics.dao.impl.CancelOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="categoryDAO"
+		class="com.neusoft.logistics.dao.impl.CategoryDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="changeProductOrderDAO"
+		class="com.neusoft.logistics.dao.impl.ChangeProductOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="customerDAO"
+		class="com.neusoft.logistics.dao.impl.CustomerDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dispatchOrderDAO"
+		class="com.neusoft.logistics.dao.impl.DispatchOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="dispatchOrderItemDAO"
+		class="com.neusoft.logistics.dao.impl.DispatchOrderItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="feedBackOrderDAO"
+		class="com.neusoft.logistics.dao.impl.FeedBackOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="functionDAO"
+		class="com.neusoft.logistics.dao.impl.FunctionDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orderDAO"
+		class="com.neusoft.logistics.dao.impl.OrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="orderItemDAO"
+		class="com.neusoft.logistics.dao.impl.OrderItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="outStorageOrderDAO"
+		class="com.neusoft.logistics.dao.impl.OutStorageOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="outStorageOrderItemDAO"
+		class="com.neusoft.logistics.dao.impl.OutStorageOrderItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="productDAO"
+		class="com.neusoft.logistics.dao.impl.ProductDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="purchaseInstorageOrderDAO"
+		class="com.neusoft.logistics.dao.impl.PurchaseInstorageOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="purchaseInStorageOrderItemDAO"
+		class="com.neusoft.logistics.dao.impl.PurchaseInStorageOrderItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="purchaseProductOrderDAO"
+		class="com.neusoft.logistics.dao.impl.PurchaseProductOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="returnProductOrderDAO"
+		class="com.neusoft.logistics.dao.impl.ReturnProductOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="roleDAO" class="com.neusoft.logistics.dao.impl.RoleDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="shortageOrderDAO"
+		class="com.neusoft.logistics.dao.impl.ShortageOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="signerOrderDAO"
+		class="com.neusoft.logistics.dao.impl.SignerOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="storageInfoDAO"
+		class="com.neusoft.logistics.dao.impl.StorageInfoDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="substationDAO"
+		class="com.neusoft.logistics.dao.impl.SubstationDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="substationInStorageOrderDAO"
+		class="com.neusoft.logistics.dao.impl.SubstationInStorageOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="substationInStorageOrderItemDAO"
+		class="com.neusoft.logistics.dao.impl.SubstationInStorageOrderItemDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="supplierDAO"
+		class="com.neusoft.logistics.dao.impl.SupplierDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="takeProductOrderDAO"
+		class="com.neusoft.logistics.dao.impl.TakeProductOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="taskOrderDAO"
+		class="com.neusoft.logistics.dao.impl.TaskOrderDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="warehouseDAO"
+		class="com.neusoft.logistics.dao.impl.WarehouseDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- bin ge  -->
+	<bean id="shortProductTotalDao"
+		class="com.neusoft.logistics.dao.impl.ShortProductTotalDao">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+</beans>

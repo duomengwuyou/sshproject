@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 
+		<bean name="/login" 
+		class="com.neusoft.logistics.action.*.*">
+		<property name="*Service" ref="*Service"></property>
+		</bean> 
+	-->
+	<bean name="/login" 
+		class="com.neusoft.logistics.action.LoginAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+		<property name="queryUserService" ref="queryUserService"></property>
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/showList" 
+		class="com.neusoft.logistics.action.FunctionListAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/dynamicTree" 
+		class="com.neusoft.logistics.action.dynamictree.DynamicTreeAction">
+		<property name="dynamicTreeService" ref="dynamicTreeService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/substationInto" 
+		class="com.neusoft.logistics.action.storemanage.SubstationIntoAction">
+		<property name="dispatchOrderService" ref="dispatchOrderService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/takeProduct" 
+		class="com.neusoft.logistics.action.storemanage.TakeProductAction">
+		<property name="taskOrderService" ref="taskOrderService"></property>
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/substationReturn"  
+		class="com.neusoft.logistics.action.storemanage.SubstationReturnAction"> 
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	
+	<!-- 周诗龙 -->
+	<bean name="/substationReturnOut" 
+		class="com.neusoft.logistics.action.storemanage.SubstationReturnOutAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/centerwarehouseInto" 
+		class="com.neusoft.logistics.action.storemanage.CenterwarehouseIntoAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+	<!-- 周诗龙 -->
+	<bean name="/centerwarehouseOut" 
+		class="com.neusoft.logistics.action.storemanage.CenterwarehouseOutAction">
+		<!-- ref="queryUserService" 引用applicationContext-services.xml中的queryUserService -->
+	</bean>
+</beans>

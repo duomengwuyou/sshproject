@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+  
+  <!-- 罗荣博  查询订单信息-->
+	<bean id="orderInfoService"
+		class="com.neusoft.logistics.service.impl.customermanage.OrderInfoServiceImpl">
+		<property name="orderDAO" ref="orderDAO" />
+	</bean>
+
+	<!-- 罗荣博  订单查询-订单详细信息-->  
+	<bean id="orderDetailService"
+		class="com.neusoft.logistics.service.impl.customermanage.OrderDetailServiceImpl">
+		<property name="orderDetailDAO" ref="orderDAO" />
+	</bean>
+	
+	<!-- 罗荣博  订单查询-商品详细信息-->  
+	<bean id="productDetailService"
+		class="com.neusoft.logistics.service.impl.customermanage.ProductDetailServiceImpl">
+		<property name="orderItemDAO" ref="orderItemDAO" />
+		<property name="orderDAO" ref="orderDAO" />
+		<property name="shortageOrderDAO" ref="shortageOrderDAO" />
+	</bean>
+  
+</beans>

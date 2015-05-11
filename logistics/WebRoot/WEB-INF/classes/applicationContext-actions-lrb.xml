@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!-- 
+		<bean name="/login" 
+		class="com.neusoft.logistics.action.*.*">
+		<property name="*Service" ref="*Service"></property>
+		</bean> 
+	-->
+	
+		<!-- 罗荣博 orderInfo-->
+	<bean name="/orderInfo" 
+		class="com.neusoft.logistics.action.customerservice.OrderInfoAction">
+		<property name="orderInfoService" ref="orderInfoService"/>
+	</bean>
+	
+	<!-- 罗荣博 orderDetail-->
+	<bean name="/orderDetail" 
+		class="com.neusoft.logistics.action.customerservice.OrderDetailAction">
+		<property name="orderDetailService" ref="orderDetailService"></property>
+	</bean>
+
+	
+	<!-- 罗荣博 ProductDetail-->
+	<bean name="/productDetail" 
+		class="com.neusoft.logistics.action.customerservice.ProductDetailAction">
+		<property name = "productDetailService" ref = "productDetailService"/>
+	</bean>
+	
+</beans>

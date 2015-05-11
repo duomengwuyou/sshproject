@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!--   ####  配置sessionFactory  ####
+		
+		注入hibernate的sessionFactory,到LocalSessionFactoryBean里面的哪个参数上，
+		由property属性决定：configLocation，它是LocalSessionFactoryBean类的属性，
+		对应的该类的代码在248行：
+		
+		public void setConfigLocation(Resource configLocation) {
+		this.configLocations = new Resource[] {configLocation};}
+		
+		所以 property 的name的值是 “configLocation”。	
+		要把hibernate的配置文件hibernate.cfg.xml注入进来，即LocalSessionFactoryBean类的属性中。
+		那么如何找到这个hibernate的配置文件，我们需使用spring给我们实现的一个协议classpath:******，
+		这样spring就会到classpath路径下搜索我们这个配置文件，然后就能帮助我们创建出sessionFactory
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+	</bean>
+
+	<!-- ####  配置事务管理器  #### 
+		
+		事务管理器是由Spring 的HibernateTransactionManager类来封装实现的，只要配置进来即可。
+		首先要将sessionFactory注入进来，见代码：HibernateTransactionManager类的：
+		第：135行：
+		private SessionFactory sessionFactory;
+		第：179行：
+		public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;}
+		这样就可以把刚才容器帮我们实现的sessionFactory实例注入进来了。
+		<ref bean="sessionFactory"/>这个ref引用的就是25行的id.
+	-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+	<!-- ####  配置事务的传播特性   ####
+		
+		PROPAGATION－－－REQUIRED: 它的意义是：
+		如果存在一个事务，则支持当前事务。如果没有事务则开启一个事务。
+		
+		了解事务的几种传播特性
+		1.	PROPAGATION_REQUIRED: 如果存在一个事务，则支持当前事务。如果没有事务则开启
+		2.	PROPAGATION_SUPPORTS: 如果存在一个事务，支持当前事务。如果没有事务，则非事务的执行
+		3.	PROPAGATION_MANDATORY: 如果已经存在一个事务，支持当前事务。如果没有一个活动的事务，则抛出异常。
+		4.	PROPAGATION_REQUIRES_NEW: 总是开启一个新的事务。如果一个事务已经存在，则将这个存在的事务挂起。
+		5.	PROPAGATION_NOT_SUPPORTED: 总是非事务地执行，并挂起任何存在的事务。
+		6.	PROPAGATION_NEVER: 总是非事务地执行，如果存在一个活动事务，则抛出异常
+		7.	PROPAGATION_NESTED：如果一个活动的事务存在，则运行在一个嵌套的事务中. 如果没有活动事务, 
+		则按TransactionDefinition.PROPAGATION_REQUIRED 属性执行
+	-->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED"
+				read-only="false" />
+			<tx:method name="save*" propagation="REQUIRED"
+				read-only="false" />
+			<tx:method name="del*" propagation="REQUIRED"
+				read-only="false" />
+			<tx:method name="mod*" propagation="REQUIRED"
+				read-only="false" />
+			<tx:method name="update*" propagation="REQUIRED"
+			read-only="false" />
+			<tx:method name="find*" read-only="true" />
+		<!-- 	<tx:method name="set*" propagation="REQUIRED"
+				read-only="false" />
+				 -->
+			<tx:method name="show*" propagation="REQUIRED"
+				read-only="false" />
+			<tx:method name="*" read-only="true" />
+			<!-- 
+				对如上开头命名的方法以外的方法的事务处理应该如下配置：
+				<tx:method name="*" read-only="true"/>
+				配置为只读事务，如果是只读事务，会提高性能，即当你更新了某一个对象的时候，
+				不再做脏数据检查了，性能上有一定的优化。
+			-->
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ####  哪些类的哪些方法参与事务  #### 
+		execution(* com.neusoft.service.*.*(..))  解释：
+		第一个 *      表示匹配所有类型的返回值情况；
+		*.*     表示匹配com.neusoft.service包下的所有的类所有的方法；
+		(..)    表示参数的各种匹配情况。（有无参数、个数、类型等）
+		
+		我们有切面的概念，这里就要使用spring特有的<aop:advisor>，它跟aspect概念一样，
+		是由切入点pointcut 和建言（即切面）advice共同组成的：
+		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txAdvice"/>
+		我们需要在<aop:advisor>中指定 pointcut,即是<aop:pointcut id="allManagerMethod">,
+		然后继续指定advice,即是<tx:advice id="txAdvice">
+	-->
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="interceptorPointCuts"
+			expression="execution(* com.neusoft.logistics.service.*.*.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="interceptorPointCuts" />
+	</aop:config>
+
+</beans>

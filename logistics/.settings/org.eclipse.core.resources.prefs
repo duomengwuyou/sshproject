@@ -1,0 +1,17 @@
+#Mon Jul 25 09:42:36 CST 2011
+=\=\=\=\=\=\=
+<<<<<<<=org.eclipse.core.resources.prefs
+>>>>>>>=1.9
+eclipse.preferences.version=1
+encoding//WebRoot/logisticsjs=UTF-8
+encoding//WebRoot/logisticsjs/dispatcherCenterManage/ProducthotMost.js=UTF-8
+encoding//WebRoot/logisticsjs/dispatcherCenterManage/purchaseProduct/purchaseProduct.js=UTF-8
+encoding//WebRoot/logisticsjs/dispatcherCenterManage/returnProduct/returnProduct.js=UTF-8
+encoding//WebRoot/logisticsjs/dispatcherCenterManage/statisticInfo/customerSatisfaction.js=UTF-8
+encoding//WebRoot/logisticsjs/dispatcherCenterManage/statisticInfo/productHotMost.js=UTF-8
+encoding//WebRoot/logisticsjs/dispatcherCenterManage/statisticInfo/subStationExecutive.js=UTF-8
+encoding//WebRoot/logisticsjs/storemanage/CentralInStorage.js=UTF-8
+encoding//src/com/neusoft/logistics/dao/inter=UTF-8
+encoding//src/com/neusoft/logistics/dao/inter/IUserDao.java=UTF-8
+encoding/<project>=UTF-8
+instance/org.eclipse.core.net/org.eclipse.core.net.hasMigrated=true
